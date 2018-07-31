@@ -7,3 +7,10 @@ export const getEvents = () => {
 		// payload: res.data
 	};
 };
+
+export const deleteEvent = (id) => {
+	return {
+		type: DELETE_EVENT,
+		payload: id
+	};
+};

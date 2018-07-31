@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import uuid from 'uuid';
+//import uuid from 'uuid';
 import { connect } from 'react-redux'; //get state from redux into react component ( when we export we need to wrap the component in parenthesis)
-import { getEvents } from '../actions/eventAction';
+import { getEvents, deleteEvent } from '../actions/eventAction';
 import PropTypes from 'prop-types';
 
 
@@ -22,6 +22,10 @@ class EventList extends Component {
     this.props.getEvents();
   }
 
+  onDeleteClick = (id) => {
+    this.props.deleteEvent(id);
+  };
+
   render(){
 
     //this.props.item
@@ -29,18 +33,6 @@ class EventList extends Component {
    const {items} = this.props.item;
     return(
       <Container>
-        <Button
-          color="dark"
-          style={{marginBottom: '2rem'}}
-          onClick ={() => {
-              const name = prompt('Enter Event Name');
-              if(name) {
-                this.setState(state => ({
-                  items: [...state.items, {id: uuid(), name}]
-                }));
-              }
-          }}
-          >Add Event</Button>
           <ListGroup>
             <TransitionGroup className="event-list">
               {items.map(({ id, name }) => (
@@ -50,11 +42,8 @@ class EventList extends Component {
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={() => {
-                      this.setState(state => ({
-                        items: state.items.filter(item => item.id !== id )
-                      }))
-                    }}
+                    onClick={this.onDeleteClick.bind(this, id)}
+
                   >
                     &times;
                   </Button>
@@ -81,7 +70,7 @@ const mapStateToProps = (state) => ({
   item: state.item
 });
 
-export default connect(mapStateToProps, {getEvents}) (EventList);
+export default connect(mapStateToProps, {getEvents, deleteEvent}) (EventList);
 
 
 
