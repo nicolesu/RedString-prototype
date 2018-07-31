@@ -2,23 +2,31 @@ import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'uuid';
-//import { connect } from 'react-redux';
-//import { getItems, deleteItem } from '../actions/itemActions';
-//import PropTypes from 'prop-types';
+import { connect } from 'react-redux'; //get state from redux into react component ( when we export we need to wrap the component in parenthesis)
+import { getEvents } from '../actions/eventAction';
+import PropTypes from 'prop-types';
+
 
 class EventList extends Component {
 
-  state = {
-    items:[
-      { id:uuid(), name:'VR Game'},
-      { id:uuid(), name:'Escape Room'},
-      { id:uuid(), name:'KTV'},
-      { id:uuid(), name:'Happy Hour'}
-    ]  
+  // state = {
+  //   items:[
+  //     { id:uuid(), name:'VR Game'},
+  //     { id:uuid(), name:'Escape Room'},
+  //     { id:uuid(), name:'KTV'},
+  //     { id:uuid(), name:'Happy Hour'}
+  //   ]  
+  // }
+
+  ComponentDidMount(){
+    this.props.getEvents();
   }
 
   render(){
-    const { items } = this.state;
+
+    //this.props.item
+   // const { items } = this.state;
+   const {items} = this.props.item;
     return(
       <Container>
         <Button
@@ -63,4 +71,17 @@ class EventList extends Component {
  
 } 
 
-export default EventList;
+EventList.propTypes = {
+  getEvents: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired 
+}
+
+//take item state turn it into a component property so we can use 
+const mapStateToProps = (state) => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps, {getEvents}) (EventList);
+
+
+
