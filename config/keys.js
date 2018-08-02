@@ -1,3 +1,3 @@
 module.exports = {
-	mongoURI: 'mongodb://tingchis:Ns28353188@ds255451.mlab.com:55451/mern_rs'
+	mongoURI: 'mongodb://tingchis:ns28353188@ds161391.mlab.com:61391/rs_try1'
 };

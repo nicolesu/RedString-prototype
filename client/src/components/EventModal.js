@@ -11,11 +11,15 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addEvent } from '../actions/eventAction';
+//import uuid from 'uuid';
 
 class EventModal extends Component {
 	state = {
 		modal: false,
-		name: ''
+		name: '',
+		description:'',
+		location:'',
+		time:''
 	};
 
 	toggle =() => {
@@ -24,9 +28,28 @@ class EventModal extends Component {
 		});
 	};
 
-	onChange=(event) => {
+	onChange =(event) => {
 		this.setState({ [event.target.name]: event.target.value });
 
+	};
+
+	onSubmit =(event) => {
+		event.preventDefault();
+
+		const newEvent= {
+			//id: uuid(),
+			name: this.state.name,
+			description: this.state.description,
+			location: this.state.location,
+			time: this.state.time
+
+		}
+
+		//add event 
+		this.props.addEvent(newEvent);
+
+		//close modal
+		this.toggle();
 	};
 
 	render(){
@@ -36,7 +59,7 @@ class EventModal extends Component {
 				color="dark"
          	 	style={{ marginBottom: '2rem' }}
           		onClick={this.toggle}
-			>Add Event</Button>
+			>Add New Event</Button>
 			<Modal  isOpen={this.state.modal} toggle={this.toggle}>
 				<ModalHeader toggle={this.toggle}>Add To Event List</ModalHeader>
 		          <ModalBody>
@@ -88,4 +111,8 @@ class EventModal extends Component {
 
 }
 
-export default connect() (EventModal);
+const mapStateToProps = (state) => ({
+  item: state.item
+});
+
+export default connect(mapStateToProps, {addEvent}) (EventModal);

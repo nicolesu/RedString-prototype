@@ -1,49 +1,33 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-//import uuid from 'uuid';
-import { connect } from 'react-redux'; //get state from redux into react component ( when we export we need to wrap the component in parenthesis)
+import { connect } from 'react-redux';
 import { getEvents, deleteEvent } from '../actions/eventAction';
 import PropTypes from 'prop-types';
 
-
 class EventList extends Component {
-
-  // state = {
-  //   items:[
-  //     { id:uuid(), name:'VR Game'},
-  //     { id:uuid(), name:'Escape Room'},
-  //     { id:uuid(), name:'KTV'},
-  //     { id:uuid(), name:'Happy Hour'}
-  //   ]  
-  // }
-
-  ComponentDidMount(){
+  componentDidMount() {
     this.props.getEvents();
   }
 
-  onDeleteClick = (id) => {
+  onDeleteClick = id => {
     this.props.deleteEvent(id);
   };
 
-  render(){
-
-    //this.props.item
-   // const { items } = this.state;
-   const {items} = this.props.item;
-    return(
+  render() {
+    const { items } = this.props.item;
+    return (
       <Container>
-          <ListGroup>
-            <TransitionGroup className="event-list">
-              {items.map(({ id, name }) => (
-              <CSSTransition key={id} timeout={500} classNames="fade">
+        <ListGroup>
+          <TransitionGroup className="event-list">
+            {items.map(({ _id, name }) => (
+              <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
                   <Button
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={this.onDeleteClick.bind(this, id)}
-
+                    onClick={this.onDeleteClick.bind(this, _id)}
                   >
                     &times;
                   </Button>
@@ -51,26 +35,26 @@ class EventList extends Component {
                 </ListGroupItem>
               </CSSTransition>
             ))}
-
-            </TransitionGroup>
-          </ListGroup>
+          </TransitionGroup>
+        </ListGroup>
       </Container>
     );
   }
- 
-} 
-
-EventList.propTypes = {
-  getEvents: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired 
 }
 
-//take item state turn it into a component property so we can use 
-const mapStateToProps = (state) => ({
+EventList.propTypes = {
+ // getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
   item: state.item
 });
 
-export default connect(mapStateToProps, {getEvents, deleteEvent}) (EventList);
+export default connect(
+  mapStateToProps,
+  { getEvents, deleteEvent }
+)(EventList);
 
 
 

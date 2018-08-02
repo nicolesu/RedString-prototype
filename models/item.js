@@ -1,9 +1,22 @@
+//item equals event in this app
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create schema
 const ItemSchema = new Schema({
 	name:{
+		type: String,
+		required: true
+	},
+	description:{
+		type: String,
+		required: true
+	},
+	location:{
+		type: String,
+		required: true
+	},
+	time:{
 		type: String,
 		required: true
 	},
