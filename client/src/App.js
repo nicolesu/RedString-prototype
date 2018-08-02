@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Button } from 'reactstrap';
 import AppNavBar from './components/AppNavBar';
-import EventList from './components/EventList';
-import EventModal from './components/EventModal';
-import { Container } from 'reactstrap';
+//import EventList from './components/EventList';
+//import EventModal from './components/EventModal';
+//import { Container } from 'reactstrap';
 import Main from './Main';
 
 import {Provider} from 'react-redux';
@@ -17,8 +18,9 @@ class App extends Component {
       <Provider store ={store}>
         <div className="App">
           <AppNavBar/>
+          <Button color="primary" size="lg" active>Sign Up</Button>{' '}
+          <Button color="primary" size="lg" active>Sign In</Button>{' '}
           <Main />
-
           </div>
         </Provider>
     );

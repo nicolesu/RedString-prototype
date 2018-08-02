@@ -3,6 +3,7 @@ import { Container, ListGroup, ListGroupItem,Collapse, Button, CardBody, Card } 
 import { getEvents } from '../actions/eventAction';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Attendee from '../componentSmall/Attendee';
 
 
 
@@ -34,7 +35,7 @@ class PastEventList extends Component {
           <Collapse isOpen={this.state.collapse}>
             <Card>
               <CardBody>
-              Description: {description} <br></br> Location: {location} <br></br> Time: {time}
+              Description: {description} <br></br> Location: {location} <br></br> Time: {time}  <br></br>  <Attendee/>
               </CardBody>
             </Card>
           </Collapse>

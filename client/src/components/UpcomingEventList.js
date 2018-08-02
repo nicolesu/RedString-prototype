@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 
-
 class UpcomingEventList extends Component {
   
   componentDidMount() {
@@ -35,6 +34,7 @@ class UpcomingEventList extends Component {
             <Card>
               <CardBody>
               Description: {description} <br></br> Location: {location} <br></br> Time: {time}
+
               </CardBody>
             </Card>
           </Collapse>

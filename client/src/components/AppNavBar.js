@@ -48,7 +48,7 @@ class AppNavbar extends Component {
                   <Link to='/upcoming'>Upcoming Events</Link>
                 </NavItem>
                   <NavItem>
-                  <Link to='/host'>Host Events</Link>
+                  <Link to='/host'>Manage/Host Events</Link>
                 </NavItem>
                   <NavItem>
                   <Link to='/connection'>Connection</Link>
