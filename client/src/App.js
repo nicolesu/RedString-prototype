@@ -12,14 +12,28 @@ import store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+
 class App extends Component {
+
+  state = {
+    home : true
+  };
+
+  signIn() {
+    console.log("sign in")
+  }
+  signUp() {
+    console.log("sign up")
+  }
+
+
   render() {
     return (
       <Provider store ={store}>
         <div className="App">
           <AppNavBar/>
-          <Button color="primary" size="lg" active>Sign Up</Button>{' '}
-          <Button color="primary" size="lg" active>Sign In</Button>{' '}
+          <Button color="primary" size="lg" active onClick={this.signIn()}>Sign Up</Button>{' '}
+           <Button color="primary" size="lg" active onClick={this.signUp()}>Sign In</Button>{' '}
           <Main />
           </div>
         </Provider>

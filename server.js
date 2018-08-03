@@ -7,6 +7,8 @@ const users = require('./routes/api/users');
 
 var router = express.Router();
 
+//const UserSession = require('./models/UserSession');
+
 // import Profile from './pages/Profile';
 // import Past from './pages/Past';
 // import Upcoming from './pages/Upcoming';
@@ -36,6 +38,7 @@ app.use('/api/users', users);
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
+
 
 
 // //Profile page

@@ -6,7 +6,7 @@ import {
   setInStorage,
 } from '../../utils/storage';
 
-const UserSession = require('../../models/UserSession');
+//const UserSession = require('../../models/UserSession');
 
 class Home extends Component {
   constructor(props) {

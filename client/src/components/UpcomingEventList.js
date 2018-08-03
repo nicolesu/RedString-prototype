@@ -21,6 +21,10 @@ class UpcomingEventList extends Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
+  addToEvent(user) {
+    console.log("added to thie person's attending list")
+  }
+
   render() {
    const { items } = this.props.item;
 
@@ -33,8 +37,11 @@ class UpcomingEventList extends Component {
           <Collapse isOpen={this.state.collapse}>
             <Card>
               <CardBody>
-              Description: {description} <br></br> Location: {location} <br></br> Time: {time}
-
+              Description: {description} <br></br> Location: {location} <br></br> Time: {time} <br></br>
+               <Button color="success" size="sm" active 
+                    onClick={this.addToEvent.bind(this)}
+                >RSVP</Button>{' '} <br></br>
+               <Button color="info" size="sm" active>Invite friends</Button>{' '}
               </CardBody>
             </Card>
           </Collapse>
