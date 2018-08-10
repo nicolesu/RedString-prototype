@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING} from './types';
 
 export const getUsers = () => dispatch => {
-	dispatch(setEventsLoading());
+	dispatch(setUsersLoading());
 	axios
 		.get(`/api/users`)
 		.then(res => dispatch({

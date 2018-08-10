@@ -5,6 +5,8 @@ import Past from './pages/Past';
 import Upcoming from './pages/Upcoming';
 import Connection from './pages/Connection';
 import Host from './pages/Host';
+import SignUp from './components/SignUp';
+import Landing from './pages/Landing';
 
 
 // The Main component renders one of the three provided
@@ -15,11 +17,14 @@ import Host from './pages/Host';
 const Main = () => (
   <main>
     <Switch>
+    <Route exact path= '/' component ={Landing}/>
       <Route path='/profile' component={Profile}/>
       <Route path='/past' component={Past}/>
       <Route path='/upcoming' component={Upcoming}/>
       <Route path='/connection' component={Connection}/>
       <Route path='/host' component={Host}/>
+       <Route path='/signup' component={SignUp}/>
+
     </Switch>
   </main>
 )

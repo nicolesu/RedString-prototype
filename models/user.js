@@ -16,14 +16,12 @@ const UserSchema = new Schema({
 	// 	type: String,
 	// 	required: true
 	// },
-	// status:{ //1:single, 2:complicated, 3:seeing someone
-	// 	type: Number,
-	// 	required: true
-	// },
-	// age:{
-	// 	type: Number,
-	// 	required: true
-	// },
+	status:{ //1:single, 2:complicated, 3:seeing someone
+		type: Number,
+	},
+	age:{
+		type: Number,
+	},
 	// e_mail:{
 	// 	type: String,
 	// 	required: true

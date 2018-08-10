@@ -1,6 +1,6 @@
 //where our state actually goes, and where we check our actions
 import uuid from 'uuid';
-import { GET_EVENTS, ADD_EVENT, DELETE_EVENT, EVENTS_LOADING} from '../actions/types';
+import { GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING} from '../actions/types';
 
 const initialState = {
 	users: [

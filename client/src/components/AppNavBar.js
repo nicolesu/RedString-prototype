@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import Upcoming from '../pages/Upcoming';
 // import Connection from '../pages/Connection';
 // import Host from '../pages/Host';
+import AddFriend from './AddFriend';
 
 
 import {
@@ -52,6 +53,9 @@ class AppNavbar extends Component {
                 </NavItem>
                   <NavItem>
                   <Link to='/connection'>Connection</Link>
+                </NavItem>
+                <NavItem>
+                <AddFriend/>
                 </NavItem>
               </Nav>
             </Collapse>
